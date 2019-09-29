@@ -1,8 +1,9 @@
 var path = require('path');
 const MiniCssExtractPlugin = require ('mini-css-extract-plugin');
+const SpritesmithPlugin = require('webpack-spritesmith');
 
 module.exports = {
-    mode: 'development',
+    mode: process.env.NODE_ENV || 'development',
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -15,7 +16,7 @@ module.exports = {
                 use: [
                     {
                         loader: 'url-loader',
-                        options: { limit: 40000}
+                        options: { limit: 400000}
                     },
                     {
                         loader: 'image-webpack-loader',
@@ -46,7 +47,22 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: 'style.css'
-        })
+        }),
+        new SpritesmithPlugin(
+            {
+                src:{
+                    cwd: path.resolve(__dirname, 'src/sprite'),
+                    glob: '**/*.png'
+                },
+                target: {
+                    image: path.resolve(__dirname, 'src/images/sprite.png'),
+                    css: path.resolve(__dirname, 'src/styles/_sprites.scss')
+                },
+                apiOptions: {
+                    cssImageRef: "../images/sprite.png"
+                }
+            }
+        )
     ],
     devServer: {
         open: true,

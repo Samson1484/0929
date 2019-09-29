@@ -1,6 +1,19 @@
 $bgcolor: #ccc;
 
 $link-color:#f00;
+
+@import './sprites';
+
+.icon{
+    &.icon-1{
+        @include sprite($p1);
+    }
+    &.icon-2{
+        @include sprite($p2);
+    }
+}
+
+
 body{
     background-color: #ccc ;
     a{
