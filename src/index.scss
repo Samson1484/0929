@@ -1,0 +1,17 @@
+$bgcolor: #ccc;
+
+$link-color:#f00;
+body{
+    background-color: #ccc ;
+    a{
+        color: $link-color;
+    }
+    .container{
+        a{
+            color: $link-color;
+            &:hover{
+                color:#ffffff;
+            }
+        }
+    }
+}

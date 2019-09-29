@@ -1,0 +1,9 @@
+body {
+  background-color: #ccc; }
+  body a {
+    color: #f00; }
+  body .container a {
+    color: #f00; }
+    body .container a:hover {
+      color: #ffffff; }
+
