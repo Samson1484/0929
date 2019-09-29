@@ -11,6 +11,19 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(jpe?g|png|gif|svg)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: { limit: 40000}
+                    },
+                    {
+                        loader: 'image-webpack-loader',
+                        options: { byPassOnDebeg: true}
+                    }
+                ]
+            },
+            {
                 test: /\.(sa|sc|c)ss$/,   // /\.(sa|sc|c)ss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
